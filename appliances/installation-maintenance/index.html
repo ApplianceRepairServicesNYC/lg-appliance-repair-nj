@@ -2619,7 +2619,8 @@
                     } else {
                         serviceAreasSubmenu.style.maxHeight = serviceAreasSubmenu.scrollHeight + 'px';
                     }
-                }
+                });
+            }
             // County dropdown toggles
             document.querySelectorAll('.county-item').forEach(function(item) {
                 item.addEventListener('click', function(e) {
@@ -2637,8 +2638,6 @@
                     }
                 });
             });
-);
-            }
             
             // Prevent additional submenu items from closing dropdown
             const additionalItems = additionalSubmenu.querySelectorAll('li');
