@@ -1010,36 +1010,41 @@
             cursor: pointer;
             font-weight: 600 !important;
             background: rgba(0,48,135,0.3) !important;
+            display: block !important;
         }
         .county-item:hover {
             background: var(--red) !important;
         }
         .county-towns {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease;
-            background: rgba(0, 0, 0, 0.25);
-            margin: 0 15px 8px;
-            border-radius: 6px;
+            display: none;
+            background: rgba(0, 0, 0, 0.35);
+            margin: 0;
+            padding: 0;
+            border-radius: 0;
         }
         .county-towns.open {
-            max-height: 1500px;
-            overflow-y: auto;
+            display: block;
         }
         .county-towns li {
-            padding: 10px 25px !important;
-            font-size: 15px !important;
+            padding: 12px 35px !important;
+            font-size: 14px !important;
             margin: 0 !important;
-            line-height: 1.6 !important;
+            line-height: 1.4 !important;
+            background: transparent !important;
         }
         .county-towns li a {
-            color: #ccc !important;
+            color: #bbb !important;
         }
         .county-towns li:hover {
             background: var(--red) !important;
         }
         .county-towns li:hover a {
             color: white !important;
+        }
+        .service-areas-submenu > li.county-item {
+            padding: 15px 30px !important;
+            margin: 5px 10px !important;
+            border-radius: 6px;
         }
     </style>
 </head>
