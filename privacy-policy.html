@@ -959,7 +959,7 @@
             if (navCallNow) {
                 navCallNow.addEventListener('click', function() {
                     if (this.dataset.revealed) return;
-                    const digits = [2, 0, 1, 2, 9, 8, 3, 4, 9, 9];
+                    const digits = [2, 0, 1, 2, 5, 5, 4, 2, 5, 9];
                     const num = digits.join('');
                     const formatted = `+1 (${num.slice(0,3)}) ${num.slice(3,6)}-${num.slice(6)}`;
                     this.innerHTML = formatted;
