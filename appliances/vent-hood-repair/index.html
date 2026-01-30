@@ -23,19 +23,7 @@
     <link rel="shortcut icon" href="https://lgappliancerepairnj.com/favicon.png?v=1">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@600;700&family=Segoe+UI:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script>
-        (function() {
-            try {
-                emailjs.init({
-                    publicKey: "zfCrLmZU8eK9CuZcs"
-                });
-            } catch (error) {
-                console.error("Failed to initialize EmailJS:", error);
-            }
-        })();
-    </script>
-    <script type="application/ld+json">
+<script type="application/ld+json">
         {
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
@@ -1691,16 +1679,15 @@
                 <button class="form-call-now" id="formCallNow">Call Now</button>
                 <div class="cf-contact-form-section" id="cfContactFormSection">
                     <p class="expect-text">What to Expect: Once you submit your request, a representative will contact you within 30 minutes...</p>
-                    <form id="cfContactForm" class="cf-contact-form">
-                        <div class="cf-form-group"><label for="cfName">Name *</label><input type="text" id="cfName" name="from_name" placeholder="John Doe" required></div>
-                        <div class="cf-form-group"><label for="cfEmail">Email *</label><input type="email" id="cfEmail" name="user_email" placeholder="john@example.com" required></div>
-                        <input type="hidden" name="reply_to" id="cfReplyTo">
-                        <input type="hidden" name="email" id="cfEmailHidden">
-                        <input type="hidden" name="from_email" id="cfFromEmail">
-                        <input type="hidden" name="customer_email" id="cfCustomerEmail">
-                        <input type="hidden" name="appliance_type" id="cfApplianceType">
-                        <div class="cf-form-group"><label for="cfSubject">Appliance Type *</label>
-                            <select id="cfSubject" name="subject" required>
+                    <form id="cfContactForm" class="cf-contact-form" action="https://formsubmit.co/insuranceappliance@gmail.com" method="POST">
+                        <input type="hidden" name="_subject" value="New LG Appliance Repair Request - New Jersey">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_next" id="formNextUrl">
+                        <div class="cf-form-group"><label for="cfName">Name *</label><input type="text" id="cfName" name="name" placeholder="John Doe" required></div>
+                        <div class="cf-form-group"><label for="cfEmail">Email *</label><input type="email" id="cfEmail" name="email" placeholder="john@example.com" required></div>
+                                                                                                                                                <div class="cf-form-group"><label for="cfSubject">Appliance Type *</label>
+                            <select id="cfSubject" name="appliance_type" required>
                                 <option value="" disabled selected>Select Appliance Type...</option>
                                 <option value="LG Refrigerator Repair">LG Refrigerator</option>
                                 <option value="LG Washer Repair">LG Washer</option>
@@ -2638,24 +2625,16 @@
             // Form Submit
             const cfContactForm = document.getElementById('cfContactForm');
             if (cfContactForm) {
-                cfContactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    console.log('Form submitted (mobile:', window.innerWidth <= 768, ')');
-                    const email = this.user_email.value.trim();
-                    emailjs.sendForm('service_emxksio', 'template_tmexlql', this)
-                        .then(() => {
-                            console.log('Form submission successful, email:', email);
-                            this.reset();
-                            document.getElementById('cfContactFormSection').classList.remove('active');
-                            document.getElementById('successMessage').innerHTML = ` <strong>Thank you!</strong><br><br> Your request has been sent.<br><br> We will contact you at<br><strong>${email}</strong><br> within the next 30 minutes. `;
-                            document.getElementById('cfSuccessModal').classList.add('active');
-                            document.getElementById('cfModalOverlay').classList.add('active');
-                        })
-                        .catch((error) => {
-                            console.error('Form submission failed:', error);
-                            alert('Failed to send. Please try again or call us.');
-                        });
-                });
+                var nextUrl = document.getElementById('formNextUrl');
+                if (nextUrl) {
+                    nextUrl.value = window.location.href.split('?')[0] + '?submitted=true';
+                }
+            }
+
+            if (window.location.search.includes('submitted=true')) {
+                document.getElementById('cfSuccessModal').classList.add('active');
+                document.getElementById('cfModalOverlay').classList.add('active');
+                history.replaceState(null, '', window.location.pathname);
             }
             // Modal Close
             const cfCloseModal = document.getElementById('cfCloseModal');
@@ -2679,8 +2658,6 @@
         });
     </script>
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"df4eaee1f863452385fca24b1c8a3813","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
-    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"df4eaee1f863452385fca24b1c8a3813","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"df4eaee1f863452385fca24b1c8a3813","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"df4eaee1f863452385fca24b1c8a3813","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"df4eaee1f863452385fca24b1c8a3813","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 <script>
