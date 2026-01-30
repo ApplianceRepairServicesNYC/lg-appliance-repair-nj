@@ -1030,6 +1030,33 @@
             margin: 5px 10px !important;
             border-radius: 6px;
         }
+/* Modal System */
+.modal-overlay {
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.7); z-index: 9998; opacity: 0; transition: opacity 0.3s;
+}
+.modal-overlay.active { display: block; opacity: 1; }
+.modal-card {
+    display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    background: white; border-radius: 15px; z-index: 9999; max-width: 800px; width: 90%;
+    max-height: 80vh; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+}
+.modal-card.active { display: flex; flex-direction: column; }
+.modal-header {
+    background: var(--blue); color: white; padding: 20px 30px;
+    display: flex; justify-content: space-between; align-items: center; flex-shrink: 0;
+}
+.modal-header h2 { margin: 0; font-size: 24px; color: white; }
+.modal-close {
+    background: rgba(255,255,255,0.2); border: none; color: white; width: 40px; height: 40px;
+    border-radius: 50%; font-size: 24px; cursor: pointer; transition: all 0.3s;
+}
+.modal-close:hover { background: var(--red); transform: rotate(90deg); }
+.modal-content {
+    padding: 30px; padding-bottom: 40px; overflow-y: auto; flex: 1; line-height: 1.8;
+}
+.modal-content h3 { color: var(--blue); margin: 25px 0 15px; font-size: 18px; }
+.modal-content p { margin: 0 0 15px; color: #444; }
     </style>
 </head>
 <body>
@@ -1628,7 +1655,10 @@
         <div class="container">
             <h1>LG Freezer Repair<br>Haddon Township, New Jersey</h1>
             <p>Same-Day Service • Factory-Trained Technicians • Haddon Township, NJ</p>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
             <button class="btn" id="heroCallNow">Request Service Today</button>
+            <button class="btn modal-trigger" data-modal="reviewsModal" style="background: transparent; border: 2px solid white;">★ Read Reviews</button>
+        </div>
         </div>
     </section>
     <section style="padding: 60px 0; background: #fff;" aria-labelledby="about-section-heading">
@@ -2271,6 +2301,7 @@
                         <li><a href="#contact">Schedule Service</a></li>
                         <li><a href="https://lgappliancerepairnj.com/privacy-policy.html">Privacy Policy</a></li>
                         <li><a href="https://lgappliancerepairnj.com/terms-of-service.html">Terms of Service</a></li>
+                        <li><a href="#" class="modal-trigger" data-modal="reviewsModal">Reviews</a></li>
                     </ul>
                 </div>
             </div>
@@ -2282,6 +2313,67 @@
                 <p>Licensed & Insured • Factory Certified Technicians • Same-Day Service Available</p>
             </div>
         </div>
+<!-- Modal Overlay -->
+<div class="modal-overlay" id="modalOverlay"></div>
+
+<!-- Reviews Modal -->
+<div class="modal-card" id="reviewsModal">
+    <div class="modal-header">
+        <h2>Customer Reviews</h2>
+        <button class="modal-close" data-close="modal">&times;</button>
+    </div>
+    <div class="modal-content">
+        <div id="elfsightContainer">
+            <div class="elfsight-app-2942fb52-4463-41bc-bc83-d831b9da6f0e"></div>
+        </div>
+        <div style="text-align: center; margin-top: 25px; padding-top: 20px; border-top: 1px solid #333;">
+            <button id="writeReviewBtn" style="background: linear-gradient(45deg, #c41e3a, #a01830); color: white; border: none; padding: 14px 35px; font-size: 16px; font-weight: 600; border-radius: 8px; cursor: pointer;">Write Your Review</button>
+            <p style="margin-top: 12px; color: #666; font-size: 14px;">Had a great experience? Help others by sharing your story!</p>
+        </div>
+        <div style="text-align: center; margin-top: 25px; padding: 25px; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border-radius: 12px;">
+            <p style="color: #fff; font-size: 18px; font-weight: 600; margin-bottom: 5px;">Ready to Book Your Repair?</p>
+            <p style="color: #aaa; font-size: 14px; margin-bottom: 15px;">Same-day service available across New Jersey!</p>
+            <button id="reviewsCallBtn" style="background: linear-gradient(45deg, #c41e3a, #a01830); color: white; border: none; padding: 14px 40px; font-size: 16px; font-weight: 600; border-radius: 8px; cursor: pointer;">📞 Call Now</button>
+        </div>
+    </div>
+</div>
+
+<!-- Write Review Modal -->
+<div class="modal-card" id="writeReviewModal" style="max-width: 500px;">
+    <div class="modal-header">
+        <h2>Write a Review</h2>
+        <button class="modal-close" data-close="modal">&times;</button>
+    </div>
+    <div class="modal-content">
+        <form id="reviewForm">
+            <div style="margin-bottom: 20px;">
+                <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #333;">Your Name *</label>
+                <input type="text" id="reviewName" required style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 16px; box-sizing: border-box;">
+            </div>
+            <div style="margin-bottom: 20px;">
+                <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #333;">Your Rating *</label>
+                <div id="starRating" style="display: flex; gap: 8px; font-size: 32px; cursor: pointer;">
+                    <span class="star" data-rating="1">☆</span>
+                    <span class="star" data-rating="2">☆</span>
+                    <span class="star" data-rating="3">☆</span>
+                    <span class="star" data-rating="4">☆</span>
+                    <span class="star" data-rating="5">☆</span>
+                </div>
+                <input type="hidden" id="reviewRating" value="0">
+            </div>
+            <div style="margin-bottom: 20px;">
+                <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #333;">Your Review *</label>
+                <textarea id="reviewText" required rows="5" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 16px; box-sizing: border-box;" placeholder="Tell us about your experience..."></textarea>
+            </div>
+            <button type="submit" style="width: 100%; background: linear-gradient(45deg, #c41e3a, #a01830); color: white; border: none; padding: 14px; font-size: 16px; font-weight: 600; border-radius: 8px; cursor: pointer;">Submit Review</button>
+        </form>
+        <div id="reviewThankYou" style="display: none; text-align: center; padding: 40px 20px;">
+            <div style="font-size: 60px; margin-bottom: 20px;">✓</div>
+            <h3 style="color: #1a1a2e; margin-bottom: 15px;">Thank You for Your Review!</h3>
+            <p style="color: #666; font-size: 16px;">Your review will be posted within 24 hours.</p>
+        </div>
+    </div>
+</div>
     </footer>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -2411,6 +2503,102 @@
             setupCallButton(document.getElementById('navCallNow'));
             setupCallButton(document.getElementById('formCallNow'));
             setupCallButton(document.getElementById('heroCallNow'));
+            setupCallButton(document.getElementById('reviewsCallBtn'));
+            // Modal System
+            const modalOverlay = document.getElementById('modalOverlay');
+            const modals = document.querySelectorAll('.modal-card');
+
+            // Lazy load Elfsight when reviews modal opens
+            let elfsightLoaded = false;
+            function loadElfsight() {
+                if (elfsightLoaded) return;
+                const script = document.createElement('script');
+                script.src = 'https://static.elfsight.com/platform/platform.js';
+                script.async = true;
+                document.body.appendChild(script);
+                elfsightLoaded = true;
+            }
+
+            // Open modal
+            document.querySelectorAll('.modal-trigger').forEach(trigger => {
+                trigger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const modalId = this.dataset.modal;
+                    const modal = document.getElementById(modalId);
+                    if (modal) {
+                        modalOverlay.classList.add('active');
+                        modal.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                        if (modalId === 'reviewsModal') loadElfsight();
+                    }
+                });
+            });
+
+            // Close modal
+            function closeAllModals() {
+                modalOverlay.classList.remove('active');
+                modals.forEach(m => m.classList.remove('active'));
+                document.body.style.overflow = '';
+            }
+
+            modalOverlay.addEventListener('click', closeAllModals);
+            document.querySelectorAll('.modal-close').forEach(btn => {
+                btn.addEventListener('click', closeAllModals);
+            });
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') closeAllModals();
+            });
+
+            // Write Review button
+            const writeReviewBtn = document.getElementById('writeReviewBtn');
+            if (writeReviewBtn) {
+                writeReviewBtn.addEventListener('click', function() {
+                    document.getElementById('reviewsModal').classList.remove('active');
+                    document.getElementById('writeReviewModal').classList.add('active');
+                });
+            }
+
+            // Star rating
+            const stars = document.querySelectorAll('#starRating .star');
+            const ratingInput = document.getElementById('reviewRating');
+            stars.forEach(star => {
+                star.addEventListener('click', function() {
+                    const rating = this.dataset.rating;
+                    ratingInput.value = rating;
+                    stars.forEach((s, i) => {
+                        s.textContent = i < rating ? '★' : '☆';
+                        s.style.color = i < rating ? '#c41e3a' : '#333';
+                    });
+                });
+                star.addEventListener('mouseenter', function() {
+                    const rating = this.dataset.rating;
+                    stars.forEach((s, i) => {
+                        s.style.color = i < rating ? '#c41e3a' : '#333';
+                    });
+                });
+            });
+            document.getElementById('starRating')?.addEventListener('mouseleave', function() {
+                const currentRating = ratingInput.value;
+                stars.forEach((s, i) => {
+                    s.style.color = i < currentRating ? '#c41e3a' : '#333';
+                });
+            });
+
+            // Review form submission
+            const reviewForm = document.getElementById('reviewForm');
+            if (reviewForm) {
+                reviewForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    if (ratingInput.value === '0') {
+                        alert('Please select a rating');
+                        return;
+                    }
+                    // Here you would normally send to server
+                    reviewForm.style.display = 'none';
+                    document.getElementById('reviewThankYou').style.display = 'block';
+                });
+            }
+
             
             const cfContactForm = document.getElementById('cfContactForm');
             if (cfContactForm) {
