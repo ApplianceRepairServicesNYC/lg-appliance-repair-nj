@@ -1510,208 +1510,75 @@
 </div>
     </footer>
     <script>
-        // Towns list with URLs
-        const bergenTowns = [
-            {name: "Allendale", zip: "07401", url: "https://lgappliancerepairnj.com/"},
-            {name: "Alpine", zip: "07620", url: "https://lgappliancerepairnj.com/"},
-            {name: "Bergenfield", zip: "07621", url: "https://lgappliancerepairnj.com/"},
-            {name: "Bogota", zip: "07603", url: "https://lgappliancerepairnj.com/"},
-            {name: "Carlstadt", zip: "07072", url: "https://lgappliancerepairnj.com/"},
-            {name: "Cliffside Park", zip: "07010", url: "https://lgappliancerepairnj.com/"},
-            {name: "Closter", zip: "07624", url: "https://lgappliancerepairnj.com/"},
-            {name: "Cresskill", zip: "07626", url: "https://lgappliancerepairnj.com/"},
-            {name: "Demarest", zip: "07627", url: "https://lgappliancerepairnj.com/"},
-            {name: "Dumont", zip: "07628", url: "https://lgappliancerepairnj.com/"},
-            {name: "East Rutherford", zip: "07073", url: "https://lgappliancerepairnj.com/"},
-            {name: "Edgewater", zip: "07020", url: "https://lgappliancerepairnj.com/"},
-            {name: "Elmwood Park", zip: "07407", url: "https://lgappliancerepairnj.com/"},
-            {name: "Emerson", zip: "07630", url: "https://lgappliancerepairnj.com/"},
-            {name: "Englewood", zip: "07631", url: "https://lgappliancerepairnj.com/"},
-            {name: "Englewood Cliffs", zip: "07632", url: "https://lgappliancerepairnj.com/"},
-            {name: "Fair Lawn", zip: "07410", url: "https://lgappliancerepairnj.com/"},
-            {name: "Fairview", zip: "07022", url: "https://lgappliancerepairnj.com/"},
-            {name: "Fort Lee", zip: "07024", url: "https://lgappliancerepairnj.com/"},
-            {name: "Franklin Lakes", zip: "07417", url: "https://lgappliancerepairnj.com/"},
-            {name: "Garfield", zip: "07026", url: "https://lgappliancerepairnj.com/"},
-            {name: "Glen Rock", zip: "07452", url: "https://lgappliancerepairnj.com/"},
-            {name: "Hackensack", zip: "07601", url: "https://lgappliancerepairnj.com/"},
-            {name: "Harrington Park", zip: "07640", url: "https://lgappliancerepairnj.com/"},
-            {name: "Hasbrouck Heights", zip: "07604", url: "https://lgappliancerepairnj.com/"},
-            {name: "Haworth", zip: "07641", url: "https://lgappliancerepairnj.com/"},
-            {name: "Hillsdale", zip: "07642", url: "https://lgappliancerepairnj.com/"},
-            {name: "Ho-Ho-Kus", zip: "07423", url: "https://lgappliancerepairnj.com/"},
-            {name: "Jersey City", zip: "07302", url: "https://lgappliancerepairnj.com/"},
-            {name: "Leonia", zip: "07605", url: "https://lgappliancerepairnj.com/"},
-            {name: "Little Ferry", zip: "07643", url: "https://lgappliancerepairnj.com/"},
-            {name: "Lodi", zip: "07644", url: "https://lgappliancerepairnj.com/"},
-            {name: "Lyndhurst", zip: "07071", url: "https://lgappliancerepairnj.com/"},
-            {name: "Newark", zip: "07430", url: "https://lgappliancerepairnj.com/"},
-            {name: "Maywood", zip: "07607", url: "https://lgappliancerepairnj.com/"},
-            {name: "Midland Park", zip: "07432", url: "https://lgappliancerepairnj.com/"},
-            {name: "Montvale", zip: "07645", url: "https://lgappliancerepairnj.com/"},
-            {name: "Moonachie", zip: "07074", url: "https://lgappliancerepairnj.com/"},
-            {name: "New Milford", zip: "07646", url: "https://lgappliancerepairnj.com/"},
-            {name: "Newark", zip: "07102", url: "https://lgappliancerepairnj.com/"},
-            {name: "North Arlington", zip: "07031", url: "https://lgappliancerepairnj.com/"},
-            {name: "Northvale", zip: "07647", url: "https://lgappliancerepairnj.com/"},
-            {name: "Norwood", zip: "07648", url: "https://lgappliancerepairnj.com/"},
-            {name: "Oakland", zip: "07436", url: "https://lgappliancerepairnj.com/"},
-            {name: "Old Tappan", zip: "07675", url: "https://lgappliancerepairnj.com/"},
-            {name: "Oradell", zip: "07649", url: "https://lgappliancerepairnj.com/"},
-            {name: "Palisades Park", zip: "07650", url: "https://lgappliancerepairnj.com/"},
-            {name: "Paramus", zip: "07652", url: "https://lgappliancerepairnj.com/"},
-            {name: "Park Ridge", zip: "07656", url: "https://lgappliancerepairnj.com/"},
-            {name: "Ramsey", zip: "07446", url: "https://lgappliancerepairnj.com/"},
-            {name: "Ridgefield", zip: "07657", url: "https://lgappliancerepairnj.com/"},
-            {name: "Ridgefield Park", zip: "07660", url: "https://lgappliancerepairnj.com/"},
-            {name: "Ridgewood", zip: "07450", url: "https://lgappliancerepairnj.com/"},
-            {name: "River Edge", zip: "07661", url: "https://lgappliancerepairnj.com/"},
-            {name: "River Vale", zip: "07675", url: "https://lgappliancerepairnj.com/"},
-            {name: "Rochelle Park", zip: "07662", url: "https://lgappliancerepairnj.com/"},
-            {name: "Rockleigh", zip: "07647", url: "https://lgappliancerepairnj.com/"},
-            {name: "Rutherford", zip: "07070", url: "https://lgappliancerepairnj.com/"},
-            {name: "Saddle Brook", zip: "07663", url: "https://lgappliancerepairnj.com/"},
-            {name: "Saddle River", zip: "07458", url: "https://lgappliancerepairnj.com/"},
-            {name: "South Hackensack", zip: "07606", url: "https://lgappliancerepairnj.com/"},
-            {name: "Teaneck", zip: "07666", url: "https://lgappliancerepairnj.com/"},
-            {name: "Tenafly", zip: "07670", url: "https://lgappliancerepairnj.com/"},
-            {name: "Teterboro", zip: "07608", url: "https://lgappliancerepairnj.com/"},
-            {name: "Upper Saddle River", zip: "07458", url: "https://lgappliancerepairnj.com/"},
-            {name: "Waldwick", zip: "07463", url: "https://lgappliancerepairnj.com/"},
-            {name: "Wallington", zip: "07057", url: "https://lgappliancerepairnj.com/"},
-            {name: "Washington Township", zip: "07676", url: "https://lgappliancerepairnj.com/"},
-            {name: "Westwood", zip: "07675", url: "https://lgappliancerepairnj.com/"},
-            {name: "Woodcliff Lake", zip: "07677", url: "https://lgappliancerepairnj.com/"},
-            {name: "Wood-Ridge", zip: "07075", url: "https://lgappliancerepairnj.com/"},
-            {name: "Wyckoff", zip: "07481", url: "https://lgappliancerepairnj.com/"}
-        ].sort((a, b) => a.name.localeCompare(b.name));
-
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log('DOM loaded at', new Date().toLocaleString());
-
-            // Call Now Button
-            const navCallNow = document.getElementById('navCallNow');
-            if (navCallNow) {
-                navCallNow.addEventListener('click', function() {
-                    if (this.dataset.revealed) return;
-                    const digits = [2, 0, 1, 2, 5, 5, 4, 2, 5, 9];
-                    const num = digits.join('');
-                    const formatted = `+1 (${num.slice(0,3)}) ${num.slice(3,6)}-${num.slice(6)}`;
-                    this.innerHTML = formatted;
-                    this.dataset.revealed = 'true';
-                    this.onclick = () => {
-                        window.location.href = `tel:+1${num}`;
-                    };
-                });
-            }
-
-            // Services Dropdown
+        document.addEventListener('DOMContentLoaded', function() {
             const servicesMenu = document.getElementById('servicesMenu');
             const servicesToggle = document.getElementById('servicesToggle');
-            const servicesDropdown = document.getElementById('servicesDropdown');
+            const dropdownCloseBtn = document.getElementById('dropdownCloseBtn');
             const additionalToggle = document.getElementById('additionalToggle');
             const additionalSubmenu = document.getElementById('additionalSubmenu');
             const serviceAreasToggle = document.getElementById('serviceAreasToggle');
             const serviceAreasSubmenu = document.getElementById('serviceAreasSubmenu');
-            const navCloseBtn = document.getElementById('navCloseBtn');
-            if (!servicesMenu || !servicesToggle || !servicesDropdown || !additionalToggle || !additionalSubmenu || !serviceAreasToggle || !serviceAreasSubmenu || !navCloseBtn) {
-                console.error('Services dropdown elements missing:', {
-                    servicesMenu: !!servicesMenu, servicesToggle: !!servicesToggle, servicesDropdown: !!servicesDropdown,
-                    additionalToggle: !!additionalToggle, additionalSubmenu: !!additionalSubmenu,
-                    serviceAreasToggle: !!serviceAreasToggle, serviceAreasSubmenu: !!serviceAreasSubmenu, navCloseBtn: !!navCloseBtn
-                });
-                return;
-            }
-            console.log('Services dropdown elements found');
-
-            function populateServiceAreasSubmenu() {
-                console.log('Populating service areas submenu...');
-                console.log('Towns array length:', bergenTowns.length);
-                serviceAreasSubmenu.innerHTML = bergenTowns.map(t => {
-                    console.log(`Generating submenu link for ${t.name}: ${t.url}`);
-                    return `<li><a href="${t.url}" class="service-area-link" aria-label="LG Appliance Repair in ${t.name}">${t.name}</a></li>`;
-                }).join('');
-                console.log('Service areas submenu populated with towns:', bergenTowns.map(t => ({name: t.name, url: t.url})));
-                console.log('Service areas submenu height:', serviceAreasSubmenu.scrollHeight + 'px');
-                console.log('Service areas submenu scrollable:', serviceAreasSubmenu.scrollHeight > serviceAreasSubmenu.clientHeight);
-            }
-            populateServiceAreasSubmenu();
-
-            servicesToggle.addEventListener('click', (e) => {
-                e.stopPropagation();
-                console.log('Services toggle clicked (mobile:', window.innerWidth <= 768, ')');
-                servicesMenu.classList.toggle('active');
-            });
-
-            additionalToggle.addEventListener('click', (e) => {
-                e.stopPropagation();
-                console.log('Additional services toggle clicked (mobile:', window.innerWidth <= 768, ')');
-                additionalToggle.classList.toggle('active');
-                additionalSubmenu.classList.toggle('active');
-                console.log('Additional submenu visibility:', additionalSubmenu.classList.contains('active') ? 'Visible' : 'Hidden');
-            });
-
-            serviceAreasToggle.addEventListener('click', (e) => {
-                e.stopPropagation();
-                console.log('Service areas toggle clicked (mobile:', window.innerWidth <= 768, ')');
-                serviceAreasToggle.classList.toggle('active');
-                serviceAreasSubmenu.classList.toggle('active');
-                console.log('Service areas submenu visibility:', serviceAreasSubmenu.classList.contains('active') ? 'Visible' : 'Hidden');
-            });
-
-            navCloseBtn.addEventListener('click', () => {
-                console.log('Mobile nav close button clicked (mobile:', window.innerWidth <= 768, ')');
+            
+            function closeDropdown() {
                 servicesMenu.classList.remove('active');
-                console.log('Services dropdown closed');
-            });
-
-            servicesDropdown.addEventListener('click', (e) => {
-                if (e.target.tagName === 'A') {
-                    console.log(`Dropdown link clicked: ${e.target.href} (mobile: ${window.innerWidth <= 768})`);
-                } else if (!e.target.classList.contains('nav-close-btn') && !e.target.classList.contains('submenu-toggle')) {
+                additionalSubmenu.style.maxHeight = '0';
+                serviceAreasSubmenu.style.maxHeight = '0';
+            }
+            
+            if (servicesToggle) {
+                servicesToggle.addEventListener('click', function(e) {
                     e.stopPropagation();
-                    console.log('Services dropdown clicked, preventing close (mobile:', window.innerWidth <= 768, ')');
-                }
+                    servicesMenu.classList.toggle('active');
+                });
+            }
+            
+            if (dropdownCloseBtn) {
+                dropdownCloseBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    closeDropdown();
+                });
+            }
+            
+            if (additionalToggle) {
+                additionalToggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    if (additionalSubmenu.style.maxHeight && additionalSubmenu.style.maxHeight !== '0px') {
+                        additionalSubmenu.style.maxHeight = '0';
+                    } else {
+                        additionalSubmenu.style.maxHeight = additionalSubmenu.scrollHeight + 'px';
+                    }
+                });
+            }
+            
+            if (serviceAreasToggle) {
+                serviceAreasToggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    if (serviceAreasSubmenu.style.maxHeight && serviceAreasSubmenu.style.maxHeight !== '0px') {
+                        serviceAreasSubmenu.style.maxHeight = '0';
+                    } else {
+                        serviceAreasSubmenu.style.maxHeight = serviceAreasSubmenu.scrollHeight + 'px';
+                    }
+                });
+            }
+            
+            document.querySelectorAll('.county-item').forEach(function(item) {
+                item.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    var countyId = this.getAttribute('data-county');
+                    var townsList = document.getElementById(countyId);
+                    if (townsList) {
+                        document.querySelectorAll('.county-towns').forEach(function(ct) {
+                            if (ct.id !== countyId) ct.classList.remove('open');
+                        });
+                        townsList.classList.toggle('open');
+                        var parent = document.getElementById('serviceAreasSubmenu');
+                        if (parent) parent.style.maxHeight = parent.scrollHeight + 'px';
+                    }
+                });
             });
-
-            // Touch events for mobile
-            servicesDropdown.addEventListener('touchstart', (e) => {
-                console.log('Touch start on dropdown (mobile:', window.innerWidth <= 768, ')');
-                e.stopPropagation();
-            }, { passive: true });
-            servicesDropdown.addEventListener('touchmove', (e) => {
-                console.log('Touch move on dropdown (mobile:', window.innerWidth <= 768, ')');
-            }, { passive: true });
-            servicesDropdown.addEventListener('touchend', (e) => {
-                console.log('Touch end on dropdown (mobile:', window.innerWidth <= 768, ')');
-                e.stopPropagation();
-            }, { passive: true });
-
-            // Close dropdowns on outside click/tap
-            document.addEventListener('click', () => {
-                console.log('Outside click detected (mobile:', window.innerWidth <= 768, ')');
-                servicesMenu.classList.remove('active');
-                additionalToggle.classList.remove('active');
-                additionalSubmenu.classList.remove('active');
-                serviceAreasToggle.classList.remove('active');
-                serviceAreasSubmenu.classList.remove('active');
-            });
+            
+            document.addEventListener('click', closeDropdown);
         });
     </script>
-<script>
-    document.querySelectorAll(".county-item").forEach(function(item) {
-        item.addEventListener("click", function(e) {
-            e.stopPropagation();
-            var countyId = this.getAttribute("data-county");
-            var townsList = document.getElementById(countyId);
-            if (townsList) {
-                document.querySelectorAll(".county-towns").forEach(function(ct) {
-                    if (ct.id !== countyId) ct.classList.remove("open");
-                });
-                townsList.classList.toggle("open");
-            }
-        });
-    });
-</script>
 </body>
 </html>
