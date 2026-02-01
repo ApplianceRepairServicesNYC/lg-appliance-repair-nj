@@ -593,10 +593,13 @@
             box-sizing: border-box;
             list-style: none;
             margin: 0;
-            column-gap: 30px;
-            columns: 3;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;
+            
         }
         .sa-slide ul li {
+            min-height: 50px;
+            display: flex;
+            align-items: center;
             padding: 12px 15px;
             margin: 8px 0;
             border-radius: 10px;
@@ -952,7 +955,7 @@
             }
             
             .sa-slide ul {
-                columns: 2;
+                display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;
             }
         }
         
@@ -979,7 +982,7 @@
             }
             
             .sa-slide ul {
-                columns: 1;
+                display: grid; grid-template-columns: 1fr; gap: 15px;
             }
         }
         
