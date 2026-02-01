@@ -437,9 +437,8 @@
         }
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
-            align-items: stretch;
         }
         .service {
             height: 100%;
@@ -475,14 +474,17 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
         .service-icon {
-            font-size: 52px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             margin-bottom: 20px;
             color: var(--blue);
             transition: color .3s;
         }
         .service-icon img {
-            width: 52px;
-            height: 52px;
+            max-height: 80px;
+            width: auto;
             object-fit: contain;
             filter: brightness(1.15);
             mix-blend-mode: multiply;
