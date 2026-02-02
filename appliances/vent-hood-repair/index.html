@@ -3045,7 +3045,21 @@
             };
             setupCallButton(document.getElementById('navCallNow'));
             setupCallButton(document.getElementById('formCallNow'));
-            setupCallButton(document.getElementById('heroCallNow'));
+            const heroCallNow = document.getElementById('heroCallNow');
+            if (heroCallNow) {
+                heroCallNow.addEventListener('click', function() {
+                    const formContainer = document.getElementById('cf-schedule-container');
+                    const formSection = document.getElementById('cfContactFormSection');
+                    if (formContainer) {
+                        formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        setTimeout(function() {
+                            if (formSection && !formSection.classList.contains('active')) {
+                                formSection.classList.add('active');
+                            }
+                        }, 500);
+                    }
+                });
+            }
             setupCallButton(document.getElementById('reviewsCallBtn'));
             // Modal System
             const modalOverlay = document.getElementById('modalOverlay');
