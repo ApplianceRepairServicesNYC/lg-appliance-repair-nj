@@ -2640,6 +2640,7 @@
             
             function closeDropdown() {
                 servicesMenu.classList.remove('active');
+                document.body.style.overflow = '';
                 additionalSubmenu.style.maxHeight = '0';
                 serviceAreasSubmenu.style.maxHeight = '0';
             }
@@ -2648,6 +2649,11 @@
                 servicesToggle.addEventListener('click', function(e) {
                     e.stopPropagation();
                     servicesMenu.classList.toggle('active');
+                    if (servicesMenu.classList.contains('active')) {
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        document.body.style.overflow = '';
+                    }
                 });
             }
             

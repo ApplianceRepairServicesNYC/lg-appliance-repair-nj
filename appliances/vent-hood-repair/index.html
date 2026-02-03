@@ -2933,6 +2933,7 @@
             // Function to close the dropdown
             function closeDropdown() {
                 servicesMenu.classList.remove('active');
+                document.body.style.overflow = '';
                 additionalToggle.classList.remove('active');
                 additionalSubmenu.classList.remove('active');
                 serviceAreasToggle.classList.remove('active');
@@ -2943,6 +2944,11 @@
                 e.stopPropagation();
                 console.log('Services toggle clicked (mobile:', window.innerWidth <= 768, ')');
                 servicesMenu.classList.toggle('active');
+                    if (servicesMenu.classList.contains('active')) {
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        document.body.style.overflow = '';
+                    }
             });
             
             // Close button functionality
