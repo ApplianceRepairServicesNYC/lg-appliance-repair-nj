@@ -256,12 +256,15 @@ header {
     background: var(--red) !important;
 }
 .county-towns {
-    display: none;
-    background: rgba(0, 0, 0, 0.35);
-    margin: 0;
-    padding: 0;
-    border-radius: 0;
-}
+            display: none;
+            background: rgba(0, 0, 0, 0.35);
+            margin: 0;
+            padding: 0;
+            border-radius: 0;
+            overflow-x: hidden;
+            overflow-y: auto;
+            max-height: 60vh;
+        }
 .county-towns.open {
     display: block;
 }
@@ -277,6 +280,9 @@ header {
             padding: 12px 35px;
             color: #bbb !important;
             text-decoration: none;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            white-space: normal;
         }
 .county-towns li:hover {
     background: var(--red) !important;
